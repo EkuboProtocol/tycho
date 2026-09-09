@@ -106,7 +106,7 @@ non-canonical pending blocks on the same broadcast.
 `CachedGateway` enqueues `WriteOp` messages; `DBCacheWriteExecutor` flushes them when the next
 block batch arrives. Writes follow a fixed FK-safe order (block → tx → contracts → tokens →
 components → state → entry points → cursor). Every mutable row is versioned with `valid_from` /
-`valid_to` — historical rows are never mutated (see `tycho-storage/CLAUDE.md`).
+`valid_to` — historical rows are never mutated (see `tycho-storage/AGENTS.md`).
 
 **Trigger:** `ReorgBuffer::drain_blocks_until(finalized_height)` — blocks are only committed once
 they are provably behind the finality horizon.

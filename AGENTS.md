@@ -1,4 +1,4 @@
-# Workflow Directives for CLAUDE
+# Workflow Directives for Coding Agents
 
 When responding to user input, always log this information to the user which knowledge docs you have read. Only say yes
 if you actually read them. Respond like this:
@@ -36,7 +36,7 @@ When spawning subagents, pass the relevant knowledge document contents to them.
   words: "plan", "design", "architect", "think through", "figure out how to".
 - `run-ci`: Run the full CI pipeline locally (format, clippy, tests). Optionally DB and node RPC dependent checks.
   Trigger words: "run ci", "check ci", "run tests", "lint", "will ci pass".
-- `sync-docs`: Review all codebase documentation files under `.claude/` and per-crate `CLAUDE.md` files, fix any that
+- `sync-docs`: Review all codebase documentation files under `.claude/` and per-crate `AGENTS.md` files, fix any that
   have drifted from the actual code. Documentation-only — does not modify source code.
 - `gas-compare`: Compare per-test gas between the current branch and a base branch (default: main). Produces per-test
   comparison tables grouped by source file. Trigger words: "gas compare", "gas report", "gas diff", "gas regression".

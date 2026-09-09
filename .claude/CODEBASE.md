@@ -26,7 +26,7 @@ Protocol Substreams modules live under `protocols/` as a separate WASM workspace
 
 | Crate | Description |
 |---|---|
-| [`tycho-common`](../crates/tycho-common/CLAUDE.md) | Domain types (`Chain`, `Block`, `ProtocolComponent`, `Token`), DTOs, async gateway/extraction traits, simulation abstractions (`SwapQuoter`) |
+| [`tycho-common`](../crates/tycho-common/AGENTS.md) | Domain types (`Chain`, `Block`, `ProtocolComponent`, `Token`), DTOs, async gateway/extraction traits, simulation abstractions (`SwapQuoter`) |
 | `tycho` | Meta-crate re-exporting a compatible, versioned set of ecosystem crates for downstream consumers |
 
 **Features on `tycho-common`**: `diesel` (Diesel derives), `test-utils` (mockall mocks).
@@ -35,10 +35,10 @@ Protocol Substreams modules live under `protocols/` as a separate WASM workspace
 
 | Crate / Module | Description |
 |---|---|
-| [`tycho-indexer/extractor`](../crates/tycho-indexer/CLAUDE.md) | `ProtocolExtractor` processes Substreams messages, `ReorgBuffer` handles finality, `ProtocolMemoryCache` for in-process state, DCI plugin for VM tracing |
-| [`tycho-indexer/services`](../crates/tycho-indexer/CLAUDE.md) | HTTP RPC endpoints, WebSocket broadcaster, `PendingDeltasBuffer` for RPC consistency, access control, plan restrictions, compression |
-| [`tycho-ethereum`](../crates/tycho-ethereum/CLAUDE.md) | Ethereum RPC client (alloy), `AccountExtractor`, `TokenPreProcessor`, `TokenAnalyzer`, `EntryPointTracer` |
-| [`tycho-storage`](../crates/tycho-storage/CLAUDE.md) | Postgres backend (Diesel): `CachedGateway` (buffered writes), `DirectGateway` (testing), temporal versioning, FK-safe write ordering |
+| [`tycho-indexer/extractor`](../crates/tycho-indexer/AGENTS.md) | `ProtocolExtractor` processes Substreams messages, `ReorgBuffer` handles finality, `ProtocolMemoryCache` for in-process state, DCI plugin for VM tracing |
+| [`tycho-indexer/services`](../crates/tycho-indexer/AGENTS.md) | HTTP RPC endpoints, WebSocket broadcaster, `PendingDeltasBuffer` for RPC consistency, access control, plan restrictions, compression |
+| [`tycho-ethereum`](../crates/tycho-ethereum/AGENTS.md) | Ethereum RPC client (alloy), `AccountExtractor`, `TokenPreProcessor`, `TokenAnalyzer`, `EntryPointTracer` |
+| [`tycho-storage`](../crates/tycho-storage/AGENTS.md) | Postgres backend (Diesel): `CachedGateway` (buffered writes), `DirectGateway` (testing), temporal versioning, FK-safe write ordering |
 
 ### Simulation & Execution
 
@@ -51,7 +51,7 @@ Protocol Substreams modules live under `protocols/` as a separate WASM workspace
 
 | Crate | Description |
 |---|---|
-| [`tycho-client`](../crates/tycho-client/CLAUDE.md) | Rust library + CLI: `TychoStreamBuilder`, snapshot+delta sync, block alignment across extractors, TVL/ID filtering |
+| [`tycho-client`](../crates/tycho-client/AGENTS.md) | Rust library + CLI: `TychoStreamBuilder`, snapshot+delta sync, block alignment across extractors, TVL/ID filtering |
 | `tycho-client-py` | Python bindings (maturin/PyO3) wrapping tycho-client (separate workspace, not a `[workspace.members]` entry) |
 
 ### Protocols

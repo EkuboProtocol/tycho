@@ -1,10 +1,10 @@
 ---
 allowed-tools: Read, Edit, Write, Bash(git log *), Bash(git diff *), Bash(git rev-parse *), Bash(git branch *), Bash(git status *), Bash(ls *), Glob, Grep, LSP, Agent
-description: "Review all codebase documentation files under `.claude/` and per-crate `CLAUDE.md` files, and fix any that have drifted from the actual code. This is a documentation-only task -- do not modify any source code."
+description: "Review all codebase documentation files under `.claude/` and per-crate `AGENTS.md` files, and fix any that have drifted from the actual code. This is a documentation-only task -- do not modify any source code."
 user-invocable: true
 ---
 
-Review all codebase documentation files under `.claude/` and per-crate `CLAUDE.md` files, and fix any that have drifted
+Review all codebase documentation files under `.claude/` and per-crate `AGENTS.md` files, and fix any that have drifted
 from the actual code. This is a documentation-only task -- do not modify any source code.
 
 ## Purpose of these docs
@@ -57,23 +57,23 @@ This repo's documentation lives in two places:
 | `.claude/knowledge/version_control.md` | Git/PR workflow for this project |
 | `.claude/knowledge/python.md` | Python conventions (tycho-client-py, dto/rpc changes) |
 
-### 2. Per-crate `CLAUDE.md` files
+### 2. Per-crate `AGENTS.md` files
 
 | File | Crate |
 |------|-------|
-| `crates/tycho-indexer/CLAUDE.md` | Main indexer: extractors, services, RPC endpoints |
-| `crates/tycho-common/CLAUDE.md` | Shared domain types, traits, simulation abstractions |
-| `crates/tycho-storage/CLAUDE.md` | Postgres backend, temporal versioning, gateway structs |
-| `crates/tycho-ethereum/CLAUDE.md` | Ethereum RPC, token analysis, entrypoint tracing |
-| `crates/tycho-client/CLAUDE.md` | Consumer library: snapshot+delta sync, feed alignment |
-| `crates/tycho-execution/CLAUDE.md` | TychoRouter contracts + Rust encoding library |
-| `crates/tycho-simulation/CLAUDE.md` | DEX simulation library: native/VM/RFQ approaches, protocol implementations |
-| `crates/tycho-integration-test/CLAUDE.md` | Live integration validator: CLI binary, env vars, validation loop |
+| `crates/tycho-indexer/AGENTS.md` | Main indexer: extractors, services, RPC endpoints |
+| `crates/tycho-common/AGENTS.md` | Shared domain types, traits, simulation abstractions |
+| `crates/tycho-storage/AGENTS.md` | Postgres backend, temporal versioning, gateway structs |
+| `crates/tycho-ethereum/AGENTS.md` | Ethereum RPC, token analysis, entrypoint tracing |
+| `crates/tycho-client/AGENTS.md` | Consumer library: snapshot+delta sync, feed alignment |
+| `crates/tycho-execution/AGENTS.md` | TychoRouter contracts + Rust encoding library |
+| `crates/tycho-simulation/AGENTS.md` | DEX simulation library: native/VM/RFQ approaches, protocol implementations |
+| `crates/tycho-integration-test/AGENTS.md` | Live integration validator: CLI binary, env vars, validation loop |
 
-| `protocols/CLAUDE.md` | Index of sub-directories |
-| `protocols/substreams/CLAUDE.md` | WASM Substreams modules: layout, templates, release process |
-| `protocols/testing/CLAUDE.md` | Integration test runner: CLI, env vars |
-| `protocols/adapter-integration/CLAUDE.md` | Foundry VM adapter tests |
+| `protocols/AGENTS.md` | Index of sub-directories |
+| `protocols/substreams/AGENTS.md` | WASM Substreams modules: layout, templates, release process |
+| `protocols/testing/AGENTS.md` | Integration test runner: CLI, env vars |
+| `protocols/adapter-integration/AGENTS.md` | Foundry VM adapter tests |
 
 ## Process
 
@@ -106,51 +106,51 @@ it only reports discrepancies.
 > - Compare env vars table against actual usage (search for `env::var` / `std::env`)
 > - Compare testing section against CI config (`.github/workflows/`)
 >
-> **tycho-indexer** (`crates/tycho-indexer/CLAUDE.md`):
+> **tycho-indexer** (`crates/tycho-indexer/AGENTS.md`):
 > - Compare module map against `crates/tycho-indexer/src/` directory tree
 > - Compare ProtocolExtractor description against `crates/tycho-indexer/src/extractor/protocol_extractor.rs`
 > - Compare RPC endpoints table against `crates/tycho-indexer/src/services/rpc.rs`
 > - Compare services/middleware listing against `crates/tycho-indexer/src/services/middleware/`
 > - Compare DCI description against `crates/tycho-indexer/src/extractor/dynamic_contract_indexer/`
 >
-> **tycho-common** (`crates/tycho-common/CLAUDE.md`):
+> **tycho-common** (`crates/tycho-common/AGENTS.md`):
 > - Compare module organisation against `crates/tycho-common/src/` directory tree
 > - Compare trait abstractions against `crates/tycho-common/src/storage.rs` and `crates/tycho-common/src/traits.rs`
 > - Compare simulation module against `crates/tycho-common/src/simulation/`
 > - Compare data flow diagram against actual inter-crate dependencies
 >
-> **tycho-storage** (`crates/tycho-storage/CLAUDE.md`):
+> **tycho-storage** (`crates/tycho-storage/AGENTS.md`):
 > - Compare module map against `crates/tycho-storage/src/postgres/` directory tree
 > - Compare write order against `DBCacheWriteExecutor` in `crates/tycho-storage/src/postgres/cache.rs`
 > - Compare gateway descriptions against `crates/tycho-storage/src/postgres/cache.rs` and `direct.rs`
 >
-> **tycho-ethereum** (`crates/tycho-ethereum/CLAUDE.md`):
+> **tycho-ethereum** (`crates/tycho-ethereum/AGENTS.md`):
 > - Compare module map against `crates/tycho-ethereum/src/` directory tree
 > - Compare trait implementations table against actual `impl` blocks
 > - Compare entrypoint_tracer contents against `crates/tycho-ethereum/src/services/entrypoint_tracer/`
 >
-> **tycho-client** (`crates/tycho-client/CLAUDE.md`):
+> **tycho-client** (`crates/tycho-client/AGENTS.md`):
 > - Compare module map against `crates/tycho-client/src/` directory tree
 > - Compare connections diagram against actual struct relationships
 > - Compare sync lifecycle against `crates/tycho-client/src/feed/synchronizer.rs`
 >
-> **tycho-execution** (`crates/tycho-execution/CLAUDE.md`):
+> **tycho-execution** (`crates/tycho-execution/AGENTS.md`):
 > - Compare Solidity architecture against `crates/tycho-execution/contracts/`
 > - Compare Rust encoding module map against `crates/tycho-execution/src/` directory tree
 > - Compare swap flow description against actual contract entry points
 >
-> **protocols** (`protocols/CLAUDE.md`, `protocols/substreams/CLAUDE.md`,
-> `protocols/testing/CLAUDE.md`, `protocols/adapter-integration/CLAUDE.md`):
+> **protocols** (`protocols/AGENTS.md`, `protocols/substreams/AGENTS.md`,
+> `protocols/testing/AGENTS.md`, `protocols/adapter-integration/AGENTS.md`):
 > - Compare substreams protocol list against `protocols/substreams/` subdirectories
 > - Compare adapter-integration protocol list against `protocols/adapter-integration/evm/src/` and `test/`
 > - Verify release tagging instructions still match `protocols/substreams/Readme.md`
 >
-> **tycho-integration-test** (`crates/tycho-integration-test/CLAUDE.md`):
+> **tycho-integration-test** (`crates/tycho-integration-test/AGENTS.md`):
 > - Compare module map against `crates/tycho-integration-test/src/` directory tree
 > - Compare env vars / CLI args against `Cli` struct in `crates/tycho-integration-test/src/main.rs`
 > - Compare validation steps against actual logic in `stream_processor/`
 >
-> **tycho-simulation** (`crates/tycho-simulation/CLAUDE.md`):
+> **tycho-simulation** (`crates/tycho-simulation/AGENTS.md`):
 > - Compare module map against `crates/tycho-simulation/src/` directory tree
 > - Compare native protocol list against `crates/tycho-simulation/src/evm/protocol/` subdirectories
 > - Compare VM adapter description against `crates/tycho-simulation/src/evm/protocol/vm/`
@@ -188,7 +188,7 @@ that hash and HEAD to find changes that demand documentation updates.
 >    - Changed CLI commands in `crates/tycho-indexer/src/cli/`
 >    - Changed data flow or extraction pipeline logic
 >    - New DEX integrations added to `crates/tycho-simulation/src/protocol/` or `crates/tycho-execution/src/encoding/`
-> 4. For each change that affects something documented in `.claude/CODEBASE.md` or any `CLAUDE.md`, report:
+> 4. For each change that affects something documented in `.claude/CODEBASE.md` or any `AGENTS.md`, report:
 >    - The commit(s) that introduced the change
 >    - Which doc file is affected
 >    - What specifically changed and what the doc should say now
